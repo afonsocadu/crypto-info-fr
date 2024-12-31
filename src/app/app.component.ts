@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 
@@ -11,8 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     
