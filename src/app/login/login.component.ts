@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   protected _password_confirmation: string = '';
   protected _isCreatingUser: boolean = false;
 
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService,  private _router: Router) {}
 
 
   /**
@@ -63,6 +64,9 @@ export class LoginComponent {
     this._authService.login(this._email, this._password).subscribe(
       response => {
         console.log(response)
+        if (response.status == 200) {
+          this._router.navigate(['/dashboard']);
+        }
       }
     )
   }
